@@ -2,6 +2,26 @@ create database  Manufacturing;
 use Manufacturing;
 select * from gsm_cards;
 
+# Show all columns in gsm_cards table
+SHOW COLUMNS FROM gsm_cards;
+
+# Convert Printing_Date_Time to proper DATETIME format
+UPDATE gsm_cards
+SET Printing_Date_Time = STR_TO_DATE(Printing_Date_Time, '%d-%m-%Y %H:%i');
+
+# Convert Lamination_Date_Time to proper DATETIME format
+UPDATE gsm_cards
+SET Lamination_Date_Time = STR_TO_DATE(Lamination_Date_Time, '%d-%m-%Y %H:%i');
+
+# Change data type of Printing_Date_Time to DATETIME
+ALTER TABLE gsm_cards
+MODIFY COLUMN Printing_Date_Time DATETIME;
+
+# Change data type of Lamination_Date_Time to DATETIME
+ALTER TABLE gsm_cards
+MODIFY COLUMN Lamination_Date_Time DATETIME;
+
+
 #1. Daily Count of Cards Printed, Accepted, and Rejected
 SELECT 
     DATE(Printing_Date_Time) AS Daily_count, 
@@ -14,7 +34,7 @@ ORDER BY Total_Cards_Printed DESC;
 
 #2.What was the daily production efficiency (percentage of accepted cards) for each day?
 SELECT 
-    DATE(Printing_DT) AS Print_Date,
+    DATE(Printing_Date_Time) AS Print_Date,
     ROUND(SUM(Accepted_Cards) / SUM(No_of_Cards_Printed) * 100, 2) AS Daily_Production_Efficiency
 FROM gsm_cards
 GROUP BY Print_Date
@@ -22,14 +42,14 @@ order by Daily_Production_Efficiency desc;
 
 #3. Identify Days with High Rejection Rate (Error Identification)
 SELECT 
-    DATE(Printing_DT) AS Rejection_Date,
+    DATE(Printing_Date_Time) AS Rejection_Date,
     ROUND(SUM(Rejected_Cards) / SUM(No_of_Cards_Printed) * 100, 2) AS Rejection_Rate
 FROM gsm_cards
 GROUP BY Rejection_Date;
 
 #4. Trend of Accepted Cards Over Time
 SELECT 
-    DATE(Printing_DT) AS Date,
+    DATE(Printing_Date_Time) AS Date,
     SUM(Accepted_Cards) AS Accepted_Cards
 FROM gsm_cards
 GROUP BY Date
@@ -37,7 +57,7 @@ ORDER BY Accepted_Cards DESC;
 
 #5.What is the average number of embedding errors each day?
 SELECT 
-    DATE(Printing_DT) AS Date,
+    DATE(Printing_Date_Time) AS Date,
     ROUND(AVG(Embedding_Errors), 2) AS Avg_Embedding_Errors
 FROM gsm_cards
 GROUP BY Date
@@ -85,22 +105,13 @@ FROM gsm_cards;
 
 #11. How many cards are printed during each hour of the day?
 SELECT 
-    HOUR(Printing_DT) AS Hour,
+    HOUR(Printing_Date_Time) AS Hour,
     SUM(No_of_Cards_Printed) AS Total_Cards
 FROM gsm_cards
 GROUP BY Hour
 ORDER BY Hour;
 
-#12. Which ink and paper type combinations had the highest acceptance rates?
-SELECT 
-    Ink_Type, 
-    Paper_Type,
-    ROUND(SUM(Accepted_Cards) * 100 / SUM(No_of_Cards_Printed), 2) AS Acceptance_rates
-FROM gsm_cards
-GROUP BY Ink_Type, Paper_Type
-ORDER BY Acceptance_rates;
-
-#13. Which ink and paper type combinations produced the most cards?
+#12. Which ink and paper type combinations produced the most cards?
 SELECT 
     Ink_Type, 
     Paper_Type,
