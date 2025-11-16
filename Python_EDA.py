@@ -40,7 +40,34 @@ data['No_of_Quarter_Cards'] = data['No_of_Quarter_Cards'].astype('int64')
 
 print(data[['Printing_Date_Time', 'Lamination_Date_Time']].head())
 
+# Data Cleaning
+data["Ink_Type"] = data["Ink_Type"].replace('Ofset Ink','Offset Ink')
 
+#Personalization_QC_Data_Accuracy
+data['Personalization_QC_Data_Accuracy'] = data['Personalization_QC_Data_Accuracy'].replace('Passed', 'Pass')
+
+#Quality_Control_Result_Personalization
+data['Quality_Control_Result_Personalization'] = data['Quality_Control_Result_Personalization'].replace('Passed', 'Pass')
+
+#Quality_Control_Result_Printing
+data['Quality_Control_Result_Printing'] = data['Quality_Control_Result_Printing'].replace('Passed', 'Pass')
+
+#Printing_QC_Alignment
+data['Printing_QC_Alignment'] = data['Printing_QC_Alignment'].replace({
+    'failed': 'Fail',
+    'Passed': 'Pass',
+    'Pss': 'Pass'
+})
+
+#Printing_QC_-_Color_Accuracy
+data['Printing_QC_Color_Accuracy'] = data['Printing_QC_Color_Accuracy'].replace({
+    'failed': 'Fail',
+    'Passed': 'Pass',
+    'Pss': 'Pass'
+})
+
+#Printing_QC_Material_Integrity
+data['Printing_QC_Material_Integrity'] = data['Printing_QC_Material_Integrity'].replace('Pas', 'Pass')
 
 # Descriptive Analysis
 print(data.describe()) 
@@ -86,16 +113,6 @@ plt.ylabel("Frequency")
 plt.show()
 
 # ------------------ BIVARIATE ANALYSIS ------------------
-plt.figure(figsize=(6,4))
-sns.scatterplot(x='No_of_Cards_Printed', y='Rejected_Cards', data=data, color='blue', alpha=0.6)
-sns.regplot(x='No_of_Cards_Printed', y='Rejected_Cards', data=data, scatter=False, color='red')  # 🔹 adds trendline
-plt.title("Printed vs Rejected Cards", fontsize=12, fontweight='bold')
-plt.xlabel("No. of Cards Printed")
-plt.ylabel("Rejected Cards")
-plt.grid(True, linestyle='----', alpha=0.5)
-plt.show()
-
-
 #Correlation Heatmap
 selected_cols = ['No_of_Cards_Printed', 'Accepted_Cards', 'Rejected_Cards', 'No_of_Half_Cards', 'No_of_Quarter_Cards']
 plt.figure(figsize=(6,4))
@@ -111,19 +128,6 @@ plt.title("Rejected Cards by Ink Type and Paper Type")
 plt.xticks(rotation=45)
 plt.show()
 
-# ------------------ BUSINESS INSIGHTS ------------------
-# Average rejected cards by Ink Type and Paper Type
-avg_rejected = data.groupby(['Ink_Type', 'Paper_Type'])['Rejected_Cards'].mean().reset_index()
-print(avg_rejected.sort_values('Rejected_Cards'))
-
-# ------------------ EFFICIENCY METRIC ------------------
-data['Production_Efficiency'] = (data['Accepted_Cards'] / data['No_of_Cards_Printed']) * 100
-print(data[['Batch_ID', 'Production_Efficiency']].nlargest(5, 'Production_Efficiency'))
-
-# ------------------ CORRELATION WITH REJECTED CARDS ------------------
-correlation_result = data[selected_cols].corr()['Rejected_Cards'].sort_values(ascending=False)
-print("\nCorrelation with Rejected Cards:\n", correlation_result)
-
 # ---------------------------------------------- Save Cleaned Data ----------------------------------------------
 output_file_path = r"C:\Users\User\Downloads\Cleaned_gsm_cards.csv"
 data.to_csv(output_file_path, index=False)
@@ -138,3 +142,4 @@ data.to_csv(output_file_path, index=False)
 
 # Confirmation message
 print(f"Cleaned data saved to: {output_file_path}")
+
