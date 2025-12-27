@@ -48,10 +48,10 @@ Imported required libraries: `pandas`, `numpy`, `matplotlib`, `seaborn`.
   3.Scatter Plot (Printed vs Rejected Cards)  
   4.Correlation Heatmap  
 
-**Added new metric:  
+  Added new metric:  
   `Production_Efficiency = (Accepted_Cards / No_of_Cards_Printed) * 100`  
 
-**Exported cleaned data to `Cleaned_gsm_cards.csv`
+Exported cleaned data to `Cleaned_gsm_cards.csv`
 
 🧾 SQL Query Highlights
 
