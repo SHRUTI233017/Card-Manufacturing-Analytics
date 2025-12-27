@@ -76,6 +76,7 @@ Exported cleaned data to `Cleaned_gsm_cards.csv`
 
 
 2.Excel Dashboard: provides tabular insights with charts and filters.  
+![Uploading Screenshot 2025-12-27 200829.png…]()
 
 
 ## 🎯 Business Objective
