@@ -68,9 +68,12 @@ Exported cleaned data to `Cleaned_gsm_cards.csv`
 <img width="1181" height="666" alt="Screenshot 2025-12-27 195910" src="https://github.com/user-attachments/assets/f690ea30-3dfb-4782-9214-ec4fa4ce898e" />
 #Material
 <img width="1238" height="663" alt="Screenshot 2025-12-27 195928" src="https://github.com/user-attachments/assets/705cf18a-8e79-4965-83bb-29c30161929d" />
-
+#Process Quality Control
+<img width="1168" height="666" alt="Screenshot 2025-12-27 195946" src="https://github.com/user-attachments/assets/8c39f869-e201-417f-81d6-88ce8dfd41aa" />
 
 2.Excel Dashboard: provides tabular insights with charts and filters.  
+<img width="1086" height="595" alt="Screenshot 2025-12-27 200829" src="https://github.com/user-attachments/assets/f8ad5ea6-7d04-40b8-8eb5-a26fa523897f" />
+
 
 ## 🎯 Business Objective
 
