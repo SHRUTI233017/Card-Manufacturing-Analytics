@@ -66,6 +66,8 @@ Exported cleaned data to `Cleaned_gsm_cards.csv`
 📊 Visualization and Reporting
 
 1.Power BI Dashboard: visualizes production KPIs, efficiency trends, and rejection rates.  
+<img width="1181" height="666" alt="Screenshot 2025-12-27 195910" src="https://github.com/user-attachments/assets/f690ea30-3dfb-4782-9214-ec4fa4ce898e" />
+
 2.Excel Dashboard: provides tabular insights with charts and filters.  
 
 
