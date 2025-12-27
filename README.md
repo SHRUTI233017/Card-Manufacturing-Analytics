@@ -13,6 +13,10 @@ This project focuses on improving the Card Manufacturing Process by using data a
 
 🧱 Project Architecture
 <img width="1053" height="643" alt="Screenshot 2025-11-03 112524" src="https://github.com/user-attachments/assets/2ed1a0e0-2f25-4546-9c3d-38b68118d01a" />
+![Uploading Screenshot 2025-12-27 195928.png…]()
+![Uploading Screenshot 2025-12-27 195946.png…]()
+
+
 
 
 ## Architecture Flow 
