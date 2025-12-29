@@ -44,8 +44,8 @@ Imported required libraries: `pandas`, `numpy`, `matplotlib`, `seaborn`.
   
   1.Box Plot for Outlier Detection  
   2.Histogram for Card Distribution  
-  3.Scatter Plot (Printed vs Rejected Cards)  
-  4.Correlation Heatmap  
+  3.Correlation Heatmap Quality vs Production Metrics
+  4.Ink–Paper Combination Analysis Using Multivariate Bar Chart 
 
   Added new metric:  
   `Production_Efficiency = (Accepted_Cards / No_of_Cards_Printed) * 100`  
