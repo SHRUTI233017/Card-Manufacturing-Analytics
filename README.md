@@ -44,7 +44,7 @@ Imported required libraries: `pandas`, `numpy`, `matplotlib`, `seaborn`.
   
   1.Box Plot for Outlier Detection  
   2.Histogram for Card Distribution  
-  3.Correlation Heatmap Quality vs Production Metrics
+  3.Correlation Heatmap Quality vs Production Metrics                                                                                                                                  
   4.Ink–Paper Combination Analysis Using Multivariate Bar Chart 
 
   Added new metric:  
